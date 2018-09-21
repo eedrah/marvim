@@ -281,11 +281,11 @@ function! Marvim_completion(ArgLead, CmdLine, CursorPos)
         let l:file_split = strpart(l:item, strlen(s:macro_home))
         let l:filename = tr(l:file_split, s:path_seperator, ":")
 
-        " remove trailing extension TODO: can break on multiple .
-        let l:name_split = split (l:filename, '\.') 
+        " remove trailing extension
+        let l:name_split = join(split(l:filename, '\.')[:-2], '.')
 
         " add the item to the complete list 
-        call add(l:c_list, l:name_split[0]) 
+        call add(l:c_list, l:name_split) 
 
     endfor 
 
